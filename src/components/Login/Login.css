@@ -14,7 +14,7 @@
     font-weight: 400;
 }
 
-.input-group{
+.input-group {
     margin-bottom: 20px;
 }
 
@@ -32,16 +32,49 @@
     font-size: 24px;
 }
 
-.form-submit{
+.form-submit {
     width: 415px;
     height: 55px;
     background-color: rgba(255, 153, 0, 0.3);
     border-radius: 5px;
     border: none;
     font-size: 20px;
+    cursor: pointer;
 }
-
-.form-link{
+.form-submit:hover{
+    background-color: rgba(255, 153, 0, 0.7);
+}
+.form-link {
     color: #FF9900;
     text-decoration: none;
+}
+.border-line{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 415px;
+}
+.line{
+    height: 2px;
+    width: 150px;
+    margin: 10px 0;
+    background-color: #2A414F;
+}
+.btn-google{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    width: 415px;
+    height: 55px;
+    padding: 5px;
+    margin: 10px 0px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #2A414F;
+    cursor: pointer;
+}
+.btn-google img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
 }
