@@ -3,7 +3,7 @@ import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProduct';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { removeFromDb } from '../../utilities/fakedb';
 
 const Orders = () => {
