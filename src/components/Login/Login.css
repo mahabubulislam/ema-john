@@ -1,6 +1,6 @@
 .form-container {
     width: 600px;
-    margin: 0 auto;
+    margin: 50px auto;
     border: 1px solid #95A0A7;
     box-sizing: border-box;
     border-radius: 8px;
@@ -31,7 +31,9 @@
     border-radius: 5px;
     font-size: 24px;
 }
-
+.error{
+    color: red;
+}
 .form-submit {
     width: 415px;
     height: 55px;
