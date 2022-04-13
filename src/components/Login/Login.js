@@ -2,31 +2,34 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
 import google from '../../images/google.png'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [ signInWithEmailAndPassword,user, loading, error,] = useSignInWithEmailAndPassword(auth);
-    
+    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
+
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-   
+
     const handleEmailBlur = event => {
         setEmail(event.target.value)
     }
     const handlePasswordBlur = event => {
         setPassword(event.target.value)
     }
- 
-    const handleLoginUser = event =>{
+
+    const handleLoginUser = event => {
         event.preventDefault()
         signInWithEmailAndPassword(email, password)
     }
-
-    if(user){
-        navigate(from, {replace:true})
+    const handleGoogleSignIn = () => {
+      signInWithGoogle()
+    }
+    if (user) {
+        navigate(from, { replace: true })
     }
 
     return (
@@ -36,11 +39,11 @@ const Login = () => {
                 <form onSubmit={handleLoginUser}>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input onBlur={handleEmailBlur} type="email" name="email" id="" required/>
+                        <input onBlur={handleEmailBlur} type="email" name="email" id="" required />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input onBlur={handlePasswordBlur} type="password" name="password" id="" required/>
+                        <input onBlur={handlePasswordBlur} type="password" name="password" id="" required />
                     </div>
                     <p className='error'><small>{error?.message.slice(10)}</small></p>
                     {
@@ -56,7 +59,7 @@ const Login = () => {
                     <p>or</p>
                     <div className='line'></div>
                 </div>
-                <button className='btn-google'><img src={google} alt="" />Continue with Google</button>
+                <button onClick={handleGoogleSignIn} className='btn-google'><img src={google} alt="" />Continue with Google</button>
             </div>
         </div>
     );
